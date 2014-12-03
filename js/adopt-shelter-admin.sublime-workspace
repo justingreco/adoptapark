@@ -1,0 +1,1207 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"date",
+				"date-group"
+			],
+			[
+				"che",
+				"check-group"
+			],
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"max-",
+				"max-height"
+			],
+			[
+				"hid",
+				"hideSplash"
+			],
+			[
+				"loca",
+				"localStorage"
+			],
+			[
+				"check",
+				"checkSupplies"
+			],
+			[
+				"bldgs",
+				"bldgSelect"
+			],
+			[
+				"attr",
+				"attributes"
+			],
+			[
+				"bldg",
+				"bldgSelect"
+			],
+			[
+				"clear",
+				"clearInterval"
+			],
+			[
+				"clas",
+				"className"
+			],
+			[
+				"refres",
+				"refreshIndex"
+			],
+			[
+				"selected",
+				"selectedIndex"
+			],
+			[
+				"ref",
+				"refreshInterval"
+			],
+			[
+				"refre",
+				"refreshIndex"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"set",
+				"setUpdateInputs"
+			],
+			[
+				"CALL",
+				"CALLER_PHN2"
+			],
+			[
+				"CALLER",
+				"CALLER_PHN"
+			],
+			[
+				"obj",
+				"objectIds"
+			],
+			[
+				"C",
+				"CALLER_EMAIL"
+			],
+			[
+				"OBJEC",
+				"OBJECTID"
+			],
+			[
+				"find",
+				"findIntersectingStreets"
+			],
+			[
+				"att",
+				"attributes"
+			],
+			[
+				"ob",
+				"orderByFields"
+			],
+			[
+				"IN",
+				"INCIDENT_TEXT"
+			],
+			[
+				"remove",
+				"removeprop	.removeProp()"
+			],
+			[
+				"d",
+				"disabled	Attr"
+			],
+			[
+				"dat",
+				"dataset"
+			],
+			[
+				"address",
+				"addressSelected"
+			],
+			[
+				"cate",
+				"category"
+			],
+			[
+				"cat",
+				"category"
+			],
+			[
+				"append",
+				"appendTo	.appendTo()"
+			],
+			[
+				"di",
+				"displayEvents"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"id",
+				"idFeatures"
+			],
+			[
+				"Ide",
+				"IdentifyTask"
+			],
+			[
+				"Id",
+				"IdentifyParameters"
+			],
+			[
+				"field",
+				"fieldInfos"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"btn",
+				"btn-success"
+			],
+			[
+				"sear",
+				"searchable"
+			],
+			[
+				"Arc",
+				"ArcGISImageServiceLayer"
+			],
+			[
+				"mr",
+				"MosaicRule"
+			],
+			[
+				"o",
+				"objectIds"
+			],
+			[
+				"retu",
+				"returnGeometry"
+			],
+			[
+				"SHEE",
+				"SHEETTOT"
+			],
+			[
+				"asbuilts",
+				"asbuiltsPanel"
+			],
+			[
+				"SH",
+				"SHEETTOT"
+			],
+			[
+				"th",
+				"thead	Tag"
+			],
+			[
+				"or",
+				"orderByFields"
+			],
+			[
+				"return",
+				"returnGeometry"
+			],
+			[
+				"bs",
+				"bs3-col	bs3-col"
+			],
+			[
+				"ar",
+				"ArcGISDynamicMapServiceLayer"
+			],
+			[
+				"createAppo",
+				"createApportionmentList"
+			],
+			[
+				"accou",
+				"accountAlert"
+			],
+			[
+				"par",
+				"parcel_status"
+			],
+			[
+				"curren",
+				"currentAcct"
+			],
+			[
+				"curre",
+				"currentAcct"
+			],
+			[
+				"toggl",
+				"toggleProgress"
+			],
+			[
+				"po",
+				"progressModal"
+			],
+			[
+				"porgr",
+				"progressMessage"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"categ",
+				"categoryField"
+			],
+			[
+				"category",
+				"categoryField"
+			],
+			[
+				"in",
+				"Incident"
+			],
+			[
+				"categro",
+				"categoryField"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"chart",
+				"chartArray"
+			],
+			[
+				"cal",
+				"callsLayer"
+			],
+			[
+				"ken",
+				"kendoGrid"
+			],
+			[
+				"categoryfi",
+				"categoryfield"
+			],
+			[
+				"no",
+				"notouch"
+			],
+			[
+				"tempm",
+				"tempMapPanel"
+			],
+			[
+				"buff",
+				"buffer"
+			],
+			[
+				"last",
+				"lastGeometry"
+			],
+			[
+				"setCa",
+				"setCategoryQueryString"
+			],
+			[
+				"catego",
+				"categories"
+			],
+			[
+				"DATE",
+				"DATECREATED"
+			],
+			[
+				"disp",
+				"displayField"
+			],
+			[
+				"ret",
+				"returnDistinctValues"
+			],
+			[
+				"select",
+				"selectpicker"
+			],
+			[
+				"graphics",
+				"graphicsLayer"
+			],
+			[
+				"street",
+				"streetService"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"type",
+				"typeahead"
+			],
+			[
+				"Simple",
+				"SimpleLineSymbol"
+			],
+			[
+				"st",
+				"streetTypeService"
+			],
+			[
+				"esri",
+				"esriGeometryPoint"
+			],
+			[
+				"ge",
+				"geometryType"
+			],
+			[
+				"esriG",
+				"esriGeometryPolyline"
+			],
+			[
+				"au",
+				"autoBind"
+			],
+			[
+				"ke",
+				"kendoDropDownList"
+			],
+			[
+				"kendoD",
+				"kendoDropDownList"
+			],
+			[
+				"graphc",
+				"graphicsLayer"
+			],
+			[
+				"cluster",
+				"clusterlayer"
+			],
+			[
+				"ArcGIS",
+				"ArcGISTiledMapServiceLayer"
+			],
+			[
+				"graph",
+				"graphicsLayer"
+			],
+			[
+				"tempmap",
+				"tempmappanel"
+			],
+			[
+				"get",
+				"getCrimes"
+			],
+			[
+				"char",
+				"chartArray"
+			],
+			[
+				"map",
+				"mappanel"
+			],
+			[
+				"print",
+				"printService"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"dista",
+				"distanceInput"
+			],
+			[
+				"geometry",
+				"geometry"
+			],
+			[
+				"vis",
+				"visualization"
+			],
+			[
+				"retur",
+				"returnGeometry"
+			],
+			[
+				"summ",
+				"summaryWindow"
+			],
+			[
+				"sumar",
+				"summaryWindow"
+			],
+			[
+				"Inci",
+				"Incidents"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"kend",
+				"kendowWindow"
+			],
+			[
+				"info",
+				"infoWindow"
+			],
+			[
+				"clust",
+				"clusterlayer"
+			],
+			[
+				"CR",
+				"CRIMECLASS"
+			],
+			[
+				"Cate",
+				"Category"
+			],
+			[
+				"column",
+				"columns"
+			],
+			[
+				"geom",
+				"geometries"
+			],
+			[
+				"crime",
+				"crimeLayer"
+			],
+			[
+				"geomet",
+				"geometry"
+			],
+			[
+				"feature",
+				"featureset"
+			],
+			[
+				"place",
+				"placeType"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/grecoj/git/gis/adoptashelter_admin/index.html",
+			"settings":
+			{
+				"buffer_size": 6946,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/grecoj/git/gis/adoptashelter_admin/js/main.js",
+			"settings":
+			{
+				"buffer_size": 8659,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/grecoj/git/gis/adoptashelter_admin/js/bootstrap-datetimepicker.min.js",
+			"settings":
+			{
+				"buffer_size": 21303,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/grecoj/git/gis/adoptashelter_admin/css/main.css",
+			"settings":
+			{
+				"buffer_size": 1761,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/JSHint/JSHint.sublime-build",
+	"command_palette":
+	{
+		"height": 67.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"js",
+				"Preferences: JSLint Settings – Default"
+			],
+			[
+				"Pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"start",
+				"Guard: Start Guard"
+			],
+			[
+				"Start",
+				"Guard: Start Guard"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 101.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/grecoj/Desktop/test.tsv",
+		"/Users/grecoj/Desktop/zoning.json",
+		"/Users/grecoj/git/gis/adoptashelter/css/main.css",
+		"/Users/grecoj/git/gis/adoptashelter/js/main.js",
+		"/Users/grecoj/git/gis/adoptashelter_admin/js/main.js",
+		"/Users/grecoj/poi/poi_wgs.geojson",
+		"/Users/grecoj/poi/poi.geojson",
+		"/Users/grecoj/poi/map5.html",
+		"/Users/grecoj/poi/map.html",
+		"/Users/grecoj/poi/map2.html",
+		"/Users/grecoj/git/gis/RelatedTables/index.html",
+		"/Users/grecoj/git/gis/RelatedTables/js/main.js",
+		"/Users/grecoj/git/gis/PUMA/js/main.js",
+		"/Users/grecoj/git/gis/Stormwater/index.html",
+		"/Users/grecoj/git/gis/PUMA/index.html",
+		"/Volumes/grecoj/shelters.sql",
+		"/Volumes/grecoj/adopters.sql",
+		"/Users/grecoj/php/php/dirt-simple-api/inc/database.inc.txt",
+		"/Users/grecoj/python/wsgi/myflaskapp.py",
+		"/Users/grecoj/python/wsgi/templates/index.html",
+		"/Users/grecoj/python/csv_to_mongo.py",
+		"/Users/grecoj/python/permits.csv",
+		"/Users/grecoj/php/php/dirt-simple-api/v1/ws_bus_shelter_adopt.php",
+		"/Users/grecoj/php/php/test.php",
+		"/Volumes/wwwroot/iMAPS_Mobile/config.txt",
+		"/Users/grecoj/php/php/ShelterAdopt/index.html",
+		"/Users/grecoj/php/php/dirt-simple-api/v1/ws_bus_shelter_admin.php",
+		"/Users/grecoj/git/gis/PUMA/css/main.css",
+		"/Volumes/wwwroot-4/iMAPS_Mobile/config.txt",
+		"/Users/grecoj/python/wsgi/static/main.js",
+		"/Volumes/grecoj-1/dirt-simple-api/v1/ws_bus_shelter_adopt.php",
+		"/Users/grecoj/php/php/ShelterAdopt/js/main.js",
+		"/Volumes/grecoj-1/ShelterAdopt/index.html",
+		"/Volumes/grecoj-1/dirt-simple-api/inc/database.inc.txt",
+		"/Volumes/grecoj-1/ShelterAdopt/js/main.js",
+		"/Users/grecoj/git/gis/miniMaps/index.html",
+		"/Users/grecoj/git/gis/miniMaps/js/main.js",
+		"/Volumes/Documents/Visual Studio 2010/Projects/StormwaterSOE/StormwaterSOE/StormwaterSOE.cs",
+		"/Users/grecoj/git/gis/ZoningEnforcement/js/main.js",
+		"/C/Users/grecoj/Desktop/addresses.json",
+		"/C/Users/grecoj/git/gis/initializr/js/main.js",
+		"/C/temp/initializr/index.html",
+		"//mapststarcweb1/c$/inetpub/wwwroot/beta/StreetTypology/css/main.css",
+		"//gisdevarc1/c$/inetpub/wwwroot/CrimeMap/js/main.js",
+		"/C/temp/CrimeMap/js/main.js",
+		"/C/temp/CrimeMap/index.html",
+		"/C/Users/grecoj/git/gis/Typology/css/main.css",
+		"/C/Users/grecoj/git/gis/CrimeMap/js/crime.js",
+		"/C/Users/grecoj/git/gis/Typology/js/main.js",
+		"/C/Users/grecoj/AppData/Roaming/Sublime Text 3/Packages/sublime-jslint/sublime-jslint.sublime-settings",
+		"/C/Users/grecoj/git/gis/CrimeMap/fuelux/all.min.js",
+		"/C/Users/grecoj/git/gis/CrimeMap/bootstrap/css/bootstrap-responsive.min.css",
+		"/C/Users/grecoj/git/gis/CrimeMap/bootstrap/js/bootstrap-typeahead.js",
+		"/C/Users/grecoj/Desktop/bootstrap.js",
+		"/C/Users/grecoj/git/gis/CrimeMap/js/main.js",
+		"//mapsarcweb1/c$/inetpub/wwwroot/iMAPS/index.html",
+		"/C/Users/grecoj/git/gis/MapTour/index.html",
+		"/C/Users/grecoj/git/gis/MapTour/app/maptour-config.js",
+		"/C/Users/grecoj/git/gis/MapTour/app/maptour-viewer-min.js",
+		"/C/Users/grecoj/Downloads/Storytelling-MapTour-1.2/index.html",
+		"//mapsarcweb1/c$/inetpub/wwwroot/iMAPS/com/raleigh/components/paneltools/property/services/config.xml",
+		"/C/Users/grecoj/Desktop/index.html",
+		"//gisdevarc1/c$/inetpub/wwwroot/php/crash.php",
+		"/C/Users/grecoj/git/gis/Crime/js/main.js",
+		"/C/Users/grecoj/AppData/Local/Temp/Temp1_layers_point_clustering.zip/data/1000-photos.json",
+		"/C/Users/grecoj/git/gis/Crime/index.html",
+		"/C/Users/grecoj/Desktop/gridMultipleSelectWithoutCTRL.html",
+		"/C/Users/grecoj/git/gis/Zoning/css/main.css",
+		"//gisdevarc1/c$/inetpub/wwwroot/Zoning/js/config.js",
+		"//gisdevarc1/c$/inetpub/wwwroot/Zoning/config.json",
+		"//gisarcweb1/c$/inetpub/wwwroot/RPDCrimeMap/javascript/settings.js",
+		"//gisarcweb1/c$/inetpub/Stormwater/SwuCcbService.php",
+		"/C/inetpub/wwwroot/BOA/index.html",
+		"/C/inetpub/wwwroot/BOA/css/main.css",
+		"/C/inetpub/wwwroot/BOA/js/main.js",
+		"/C/inetpub/wwwroot/BOA/labels.html",
+		"/C/Users/grecoj/Desktop/test.html",
+		"/C/inetpub/wwwroot/BOA/php/labels.php",
+		"/C/inetpub/wwwroot/BOA/labels.php",
+		"//gisdevarc1/c$/inetpub/wwwroot/FPDF/labels.php",
+		"/C/inetpub/wwwroot/Portal/js/plugins/jquery.search-panel.js",
+		"/C/inetpub/wwwroot/Portal/js/main.js",
+		"/C/inetpub/wwwroot/iMAPS/config/stormwater.txt",
+		"/C/inetpub/wwwroot/iMAPS/index.html",
+		"/C/inetpub/wwwroot/iMAPS/js/plugins/jquery.stormwater-search.js",
+		"/C/inetpub/wwwroot/iMAPS/js/plugins/jquery.markup-dialog.js",
+		"/C/inetpub/wwwroot/Portal/js/plugins/jquery.service-panel.js",
+		"/C/inetpub/wwwroot/iMAPS/js/main.js",
+		"/C/inetpub/wwwroot/Portal/js/plugins/jquery.places-panel.js",
+		"/C/inetpub/wwwroot/Portal/css/main.css",
+		"/C/inetpub/wwwroot/parklocatortest/css/main.css",
+		"/C/inetpub/wwwroot/Portal/index.html",
+		"/C/inetpub/wwwroot/iMAPS/js/toolbar.js",
+		"//mapststarcweb1/c$/inetpub/wwwroot/WebPortal/index.html",
+		"/C/inetpub/wwwroot/Portal/js/plugins/jquery.resources-panel.js",
+		"/C/inetpub/wwwroot/iMAPS/js/plugins/jquery.property-search.js",
+		"/C/inetpub/wwwroot/Portal/js/plugins/jquery.search-panel - Copy.js",
+		"/C/inetpub/wwwroot/iMAPS/js/map.js",
+		"/C/inetpub/wwwroot/iMAPS/js/config.js",
+		"/C/inetpub/wwwroot/iMAPS/config/config.txt",
+		"/C/inetpub/wwwroot/iMAPS/js/plugins/jquery.menubar.js",
+		"/C/inetpub/wwwroot/iMAPS/css/main.css",
+		"/C/Users/grecoj/Desktop/Copy of BBinventory.csv",
+		"/C/inetpub/wwwroot/puma/js/main.js",
+		"/C/inetpub/wwwroot/iMAPS/js/plugins.js",
+		"/C/inetpub/wwwroot/iMAPS/js/property.js",
+		"/C/inetpub/wwwroot/iMAPS/js/plugins/jquery.measure-dialog.js",
+		"/C/inetpub/wwwroot/iMAPS/config/puma.txt",
+		"/C/inetpub/wwwroot/iMAPS/js/plugins/jquery.bookmarks.js",
+		"/C/inetpub/wwwroot/iMAPS/js/layerlist.js",
+		"/C/inetpub/wwwroot/iMAPS/404.html",
+		"/C/inetpub/wwwroot/parklocatortest/js/main.js",
+		"/C/inetpub/wwwroot/crash/js/map.js",
+		"/C/inetpub/wwwroot/crash/js/crash.js",
+		"/C/inetpub/wwwroot/crash/js/extras/ClusterLayer.js",
+		"/C/inetpub/wwwroot/crash/js/main.js",
+		"//gisdevarc1/c$/inetpub/wwwroot/Zoning/index.html",
+		"/C/inetpub/wwwroot/iMAPS/js/layerlist2.js",
+		"/E/LaptopBackup/inetpub/wwwroot/JSiMAPS/js/main.js",
+		"/E/LaptopBackup/inetpub/wwwroot/JSiMAPS/js/map.js",
+		"/E/LaptopBackup/inetpub/wwwroot/JSiMAPS/js/layerlist.js",
+		"/C/inetpub/wwwroot/crash/index.html",
+		"/C/inetpub/wwwroot/crash/css/main.css",
+		"//mapsarcweb1/c$/inetpub/wwwroot/iMAPS/config.xml",
+		"/C/inetpub/wwwroot/crash/js/layout.js",
+		"//mapsarcweb1/c$/inetpub/wwwroot/ServiceFinder/config.xml",
+		"/C/inetpub/wwwroot/parklocatortest/index.html",
+		"/C/inetpub/wwwroot/crash/js/config.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"change",
+			"setdate",
+			"',",
+			"rules",
+			"frules",
+			"datetime",
+			"+1",
+			"+ 1",
+			"date()",
+			"ddt",
+			"id",
+			"data-id",
+			"tbo",
+			"table",
+			".table",
+			"table",
+			".table",
+			"adopted)",
+			"unadopt",
+			"inputDate",
+			"inputend",
+			" .",
+			"null",
+			"\" OLD_ZONING\"",
+			"\" DESCRIPTION\"",
+			"\" OVERLAY\"",
+			"\" FRONTAGE\"",
+			"\" HEIGHT\"",
+			"\"DESC_ID\"",
+			"\" NEW_ZONING\"",
+			"\" DESC_ID\"",
+			" old",
+			" id",
+			"LINK",
+			"NEW_ZONING",
+			"OLD_ZONING",
+			"DESC_ID",
+			"form",
+			"'",
+			"LOCMAR",
+			"CLEAR",
+			"\"",
+			"errorThrown",
+			"error",
+			"marker",
+			"geoj",
+			"getbuild",
+			"parknamesel",
+			"parknames",
+			"parknamesl",
+			"id =",
+			"getmaxo",
+			"prefix",
+			"getBuildings",
+			"getBu",
+			"parkselec",
+			"getbuil",
+			"					\n",
+			"textarea",
+			"form",
+			"point =",
+			"geteve",
+			"location",
+			"				",
+			"description",
+			"<label",
+			"pag",
+			"\"js/",
+			"\"css/",
+			"5000",
+			"8080",
+			";",
+			"Math",
+			":Number",
+			"var ",
+			"php-r",
+			"cat.sh",
+			"pga",
+			"gis.",
+			"_cat",
+			"gis.",
+			"_cat",
+			"gis.",
+			"_cat",
+			"identifyc",
+			"identifyco",
+			"displaysea",
+			"idf",
+			"idFeatures",
+			"idto",
+			"[],\n",
+			"setvi",
+			"togg",
+			".parent()",
+			".pare",
+			"5",
+			"organizat",
+			"\">\n",
+			"validate",
+			"CreateApportionmentL",
+			"SearchForAcc",
+			"createapportionmentli",
+			"data-addre",
+			"createapportionmentl",
+			"tr",
+			"createApportionmentL",
+			"createApp",
+			"showAccountInfo",
+			"showData",
+			"ccb",
+			"UpdateA",
+			"UpdateSi",
+			"updatepre",
+			"Update ",
+			"getAppo",
+			"identify",
+			"find",
+			"getAppo",
+			"Apportion",
+			"\"toggle\"",
+			"\"modal\"",
+			"Impervious surface Hi",
+			"Credits",
+			"[0]",
+			"showccb",
+			"init()",
+			"showImperviousInfo",
+			"createAccountSearch"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\"\"",
+			"\"old\"",
+			"\"descr\"",
+			"\"overlay\"",
+			"\"frontage\"",
+			"\"height\"",
+			"\"id\"",
+			"\"new\"",
+			"\"DESC_ID\"",
+			"old",
+			"id",
+			"url",
+			"new",
+			"old",
+			"id",
+			"'",
+			"label",
+			"<label class=\"control-label class col-sm-3\"",
+			"\"/static/",
+			"",
+			"math",
+			"",
+			", {",
+			") +",
+			", $",
+			"if (",
+			", 0",
+			", [",
+			", function",
+			"function (",
+			") {",
+			"\"<option",
+			"\"</",
+			"<op",
+			"<div",
+			"</",
+			"progressModal",
+			"option:s",
+			"+=",
+			") :",
+			" < ",
+			") - ",
+			"} else {",
+			"++",
+			"r :",
+			"; }",
+			"++",
+			": ",
+			":",
+			"http://",
+			", ",
+			", \"",
+			" : ",
+			"+ ",
+			" +",
+			" + ",
+			": \"",
+			" ? ",
+			"!==",
+			"!=",
+			"===",
+			"if (",
+			"if ",
+			") {",
+			"function (",
+			": ",
+			"progressModal",
+			"PM",
+			"_testextent",
+			"definition",
+			"name",
+			"label",
+			"fillselect",
+			"In Service",
+			"",
+			",-",
+			"In Service,",
+			"\"title\"",
+			"\"items\"",
+			"tabul",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/grecoj/git/gis/adoptashelter_admin/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6228,
+								6228
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1400.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/grecoj/git/gis/adoptashelter_admin/js/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8659,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4751,
+								4751
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1570.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/grecoj/git/gis/adoptashelter_admin/js/bootstrap-datetimepicker.min.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 21303,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								337,
+								345
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/grecoj/git/gis/adoptashelter_admin/css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1761,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								567,
+								569
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 240.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 179.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.guard":
+	{
+		"height": 0.0
+	},
+	"project": "adopt-shelter-admin.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 255.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
