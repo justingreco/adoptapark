@@ -1,10 +1,10 @@
 var config = {
 	shelters: {
-		url: 'http://mapststarcsrv3/parksapi/v1/ws_geo_attributequery.php',
+		url: 'http://mapststarcsrv3/parksrest/v1/ws_geo_attributequery.php',
 		table: 'parks.greenway_adopters'
 	},
 	adopt: {
-		url: 'http://mapststarcsrv3/parksapi/v1/ws_greenway_adopt.php'
+		url: 'http://mapststarcsrv3/parksrest/v1/ws_greenway_adopt.php'
 	},
 	search: {
 		url: 'http://maps.raleighnc.gov/arcgis/rest/services/Addresses/MapServer/0/query',
