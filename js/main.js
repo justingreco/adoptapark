@@ -242,7 +242,7 @@ function SetFormValidation () {
 		},
 		submitHandler: function () {
 			$('#adopt-alert').hide();
-                      
+            
 			//$('#adopt-modal').bu
 			$.ajax({
 				url: config.adopt.url,
@@ -257,10 +257,6 @@ function SetFormValidation () {
 				},
 				success: function (data) {
 					if (data.success) {
-						FormMarkAllValid();
-                        			$('#adopt-modal input').val('');
-                        			$('#termsCheck').attr('checked', false);
-                        			$('#submitButton').addClass('disabled');
 						$('#adopt-modal').modal('hide');
 						markers.clearLayers();
 						GetShelters();
@@ -280,7 +276,8 @@ function SetFormValidation () {
 	});
 }
 function FormMarkAllValid (){
-	$('input', 'form').removeClass('has-error');
+	$('.form-group').removeClass('has-error');
+	$('.form-group .help-block').hide();
 }
 //search functions//
 function SearchByAddress (value, dataset) {
@@ -321,6 +318,14 @@ function SetSearch () {
 		SearchByAddress(datum.value, dataset);
 	});
 }
+
+function clearForm () {
+	FormMarkAllValid();
+	$('#adopt-modal input').val('');
+	$('#termsCheck').attr('checked', false);
+	$('#submitButton').addClass('disabled');
+}
+
 $(document).ready(function () {
 	if(typeof(Storage)!=='undefined') {
 		if (window.localStorage.hideSplash === 'false' || !window.localStorage.hideSplash) {
@@ -336,6 +341,9 @@ $(document).ready(function () {
 	SetFeedbackForm();
 	SetFormValidation();
 	SetSearch();
+	$('#adopt-modal').on('hidden.bs.modal', function (e) {
+	  clearForm();
+	});
     $('#termsCheck').change(function() {
         if($(this).is(':checked')) {
             $('#submitButton').removeClass('disabled');
