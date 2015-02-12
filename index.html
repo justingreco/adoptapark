@@ -2,7 +2,7 @@
 	<head>
     	<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Adopt-A-Trail</title>
+		<title>Adopt-A-Park</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
 		<!-- Latest compiled and minified CSS -->
@@ -22,16 +22,16 @@
 	      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-          ga('create', 'UA-11110258-26', 'raleighnc.gov');
-          ga('send', 'pageview');
+		  ga('create', 'UA-11110258-33', 'auto');
+		  ga('send', 'pageview');
 
-        </script>	    
+		</script>   
 	</head>
 	<body>
 	  	<div class="navbar navbar-default" role="banner">
@@ -48,7 +48,7 @@
 	  			</div>
 	  			<div class="navbar-collapse bs-navbar-collapse collapse" role="navigation">
 	  				<ul class="nav navbar-nav navbar-right">
-	  					<li><input id="searchInput" class="typeahead form-control" type="text" placeholder="222 West Hargett Street">
+	  					<li><input id="searchInput" class="typeahead form-control" type="text" placeholder="Search by park name">
 	  					</li>
 	  					<!--<li><a href="javascript:void(0)" data-toggle='modal' data-target='#feedback-modal' >Feedback</a></li>-->
 	  					<li><a href="javascript:void(0)" data-toggle='modal' data-target='#about-modal' >About</a></li>
@@ -59,8 +59,8 @@
 	  	<div class="jumbotron hidden-xs">
 	  		<div class="header row">
 	  			<div class="col-sm-6">
-		  		<h2>Adopt-A-Trail</h2>
-		  		<span>Click on a green marker or line  on the map to adopt a trail.</span>
+		  		<h2>Adopt-A-Park</h2>
+		  		<span>Click on a green marker or area on the map to adopt a park.</span>
 		  		</div>
 		  		<div class="col-sm-2">
 		  		</div>
@@ -75,7 +75,7 @@
 	  			<div class="modal-content">
 	  				<div class="modal-header">
 	  					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	  					<h4 class="modal-title" id="myModalLabel">Adopt This Trail.</h4>
+	  					<h4 class="modal-title" id="myModalLabel">Adopt This Park.</h4>
 	  				</div>
 	  				<div class="modal-body">
 	  					<form id="form-adopt" role="form" action="javascript:void(0)">
@@ -103,7 +103,7 @@
 	  						<div class="checkbox">
 	  							<label>
 	  								<input id="termsCheck" type="checkbox">I agree to the following
-	  								<a href="javascript:void(0)" data-toggle='modal' data-target='#terms-modal'>Terms &amp; Conditions of the Adopt-A-Trail Program</a>
+	  								<a href="javascript:void(0)" data-toggle='modal' data-target='#terms-modal'>Terms &amp; Conditions of the Adopt-A-Park Program</a>
 	  							</input>
 	  						</label>
 	  					</div>
@@ -153,8 +153,8 @@
 	  			<div class="modal-body">
 	  				<p>Developed by the City of Raleigh's Geographic Information Services division using open source technology.</p>
 	  				<p>Developed for the City of Raleigh's Parks, Recreation, and Cultural Resources department.</p>
-					<p>To submit feedback about this application or the Adopt-A-Trail program, please email us at
-  						<a href="mailto:p+rvolunteers@raleighnc.gov?subject=Adopt-A-Trail Feedback&amp;cc=gis@raleighnc.gov">p+rvolunteers@raleighnc.gov</a>.
+					<p>To submit feedback about this application or the Adopt-A-Park program, please email us at
+  						<a href="mailto:p+rvolunteers@raleighnc.gov?subject=Adopt-A-Park Feedback&amp;cc=gis@raleighnc.gov">p+rvolunteers@raleighnc.gov</a>.
 					</p>
 	  			</div>
 	  		</div>
@@ -168,14 +168,14 @@
 		  				<h4 class="modal-title">About</h4>
 		  			</div> -->
 		  			<div class="modal-body">
-		  				<p>The Raleigh Parks, Recreation and Cultural Resources Adopt-A-Trail program provides a volunteer opportunity for interested individuals, businesses and groups to participate in trail cleanup and support the Capital Area Greenway System. The citizen volunteer agrees to maintain the greenway trail quarterly for at least one year. The citizen volunteer must sign an <a href="docs/adopt-a-trail-agreement.pdf" target="_blank">Adopt-A-Trail Agreement</a>. Staff request the volunteer report any vandalism or suspicious activity.</p>
+		  				<p>The Raleigh Parks, Recreation and Cultural Resources Adopt-A-Park program provides a volunteer opportunity for interested individuals, businesses and groups to participate in park maintenance projects and support the Raleigh Parks System. The citizen volunteer agrees to maintain the adopted park quarterly for at least one year. The citizen volunteer must sign an <a href="docs/adopt-a-park-agreement.pdf" target="_blank">Adopt-A-Park Agreement</a>. Staff request the volunteer report any vandalism or suspicious activity.</p>
 		  				<div class="text-center"><button class="btn btn-success" data-dismiss="modal">Continue</button></div>
 		  				<center><div class="checkbox" style="max-width:150px"><!--<label><input type="checkbox">Do not display again</label>--></div></center>
-		  				<div class="row well">
+<!-- 		  				<div class="row well">
 		  					<h5 class="text-center">Map Key</h5>
-							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-green.png" style="margin-right:10px" />Available Trail</p></div>
-							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-red.png" style="margin-right:10px" />Adopted Trail</p></div>
-						</div>
+							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-green.png" style="margin-right:10px" />Available Park</p></div>
+							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-red.png" style="margin-right:10px" />Adopted Park</p></div>
+						</div> -->
 		  			</div>
 		  		</div>
 		  	</div>
@@ -185,19 +185,19 @@
 	  		<div class="modal-content">
 	  			<div class="modal-header">
 	  				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	  				<h4 class="modal-title">Terms &amp; Conditions of the Adopt-A-Trail Program</h4>
+	  				<h4 class="modal-title">Terms &amp; Conditions of the Adopt-A-Park Program</h4>
 	  			</div>
 	  			<div class="modal-body">
-	  				<span>These are the minimum responsibilities that accompany the adoption of a trail segment for one year. The Citizen Volunteer or group will complete the following tasks quarterly as part of this program:</span>
+	  				<span>These are the minimum responsibilities that accompany the adoption of a park for one year. The Citizen Volunteer or group will complete the following tasks quarterly as part of this program:
+	  				</span>
 	  				<ol>
-	  					<li><u>Litter and Debris Removal:</u> Pick up litter and debris along trail corridor.  Place materials in receptacles if available, otherwise bag materials and place bags and other collected debris just off trail for collection by Department staff.
+	  					<li>The Citizen Volunteer shall assist the Department by arranging periodic work days to insure that the areas are clean of trash, debris, and weeds. 
 						</li>
-	  					<li><u>Tree Condition Assessment:</u> Check trees for broken limbs, trunk damage and/or decay, cavities, lightning damage, etc.  Note any split or leaning trees.</li>
-	  					<li><u>Trail Maintenance (Paved Trail Segments Only):</u>  Inspect paved trail surface and report any potholes, surface cracking, settling or other unusual conditions.</li>
-	  					<li><u>Bridge Inspection:</u> Inspect bridges/boardwalks for damaged deck boards, handrails and other components.</li>
-	  					<li><u>Trail Amenity Inspection:</u> Inventory and inspect condition of any trail amenities located within the adopted trail segment.</li>
-	  					<li>Report immediate hazards or vandalism to the Department or contact 911 if emergency or unsafe.</li>
-	  					<li>Complete and submit the <a href="docs/adopt-a-trail_quarterly_report.pdf" target="_blank">quarterly report form</a> after each volunteer date.</li>
+	  					<li>The Citizen Volunteer shall assist the Department with other maintenance as identified by both parties. </li>
+	  					<li>Weed control is limited to hand weeding. No chemical weed control shall occur by the Citizen Volunteer per the Department’s Pesticide Management Policy. </li>
+	  					<li>Maintenance shall be scheduled through the Parks, Recreation & Cultural Resources Resource Development Manager to insure that planned activities of the Citizen Volunteer do not conflict with other scheduled uses of the park. </li>
+	  					<li>Plant material selection by the Citizen volunteer shall be approved by the City Horticulturist and/ or the Parks Crew Supervisor prior to installation and shall conform to accepted horticultural industry standards and practices. </li>
+	  					<li>Complete and submit the <a href="docs/adopt-a-park_quarterly_report.pdf" target="_blank">quarterly report form</a> after each volunteer date.</li>
 	  				</li>
 	  			</ol>
 	  		</div>

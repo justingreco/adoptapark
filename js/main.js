@@ -1,10 +1,10 @@
 var config = {
-	shelters: {
-		url: 'http://mapststarcsrv3/parksrest/v1/ws_geo_attributequery.php',
-		table: 'parks.greenway_adopters'
+	parks: {
+		url: 'http://localhost/parksrest/v1/ws_geo_attributequery.php',
+		table: 'parks.parks_geojson'
 	},
 	adopt: {
-		url: 'http://mapststarcsrv3/parksrest/v1/ws_greenway_adopt.php'
+		url: 'http://localhost/parksrest/v1/ws_parks_adopt.php'
 	},
 	search: {
 		url: 'http://maps.raleighnc.gov/arcgis/rest/services/Addresses/MapServer/0/query',
@@ -12,7 +12,7 @@ var config = {
 		searchField: 'ADDRESSU'
 	}
 };
-var map, greenMarker, redMarker, markers, paths, shelterName, selected, lastColor;
+var map, greenMarker, redMarker, markers, polys, parkName, selected, lastColor;
 //map functions//
 function SetMarkerSymbols () {
 	greenMarker = L.icon({
@@ -26,15 +26,15 @@ function SetMarkerSymbols () {
 }
 function CreateMap () {
 	map = L.map('map').setView([35.83, -78.6436],11);
-        L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{minZoom: 10, maxZoom: 16, attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(map);
+        L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{minZoom: 10, attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(map);
 	/*L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom: 16, attribution: 'Esri, DeLorme, NAVTEQ'}).addTo(map);*/
-	paths = L.layerGroup().addTo(map);
-	markers = L.layerGroup().addTo(map);
+	//paths = L.layerGroup().addTo(map);
+	//markers = L.layerGroup().addTo(map);
 	if (Modernizr.geolocation) {
         L.control.locate().addTo(map);
     }
 }
-//display shelters on map//
+//display parks on map//
 
 function FormatDate(input) {
     var splitDate = input.split('-'),
@@ -65,85 +65,78 @@ function AddCirclesToPolyline(pl) {
 	});
 }
 
-function GetShelters () {
+function GetParks () {
 	$.ajax({
-		url: config.shelters.url,
+		url: config.parks.url,
 		data: {
-			table: config.shelters.table,
+			table: config.parks.table,
 			fields: '*'
 		},
 		cache: false,
 		success: function (data) {
-			$.each(data, function (i, shelter) {
-				var geom = $.parseJSON(shelter.center),
+			SetSearch(data);
+
+			var markerJson = [],
+				polyJson = [];
+
+
+			$.each(data, function (i, park) {
+				var geom = $.parseJSON(park.center),
 					icon = greenMarker;
-				if (shelter.start) {
+				if (park.start) {
 					icon = redMarker;
 				}
-				var marker = L.marker([geom.coordinates[1], geom.coordinates[0]], {icon:icon});
-				markers.addLayer(marker);
-				var linegeom = $.parseJSON(shelter.geom);
-				/*var pl = L.polyline([], {color:'green'});
-				$.each(linegeom.coordinates[0], function (i, coord) {
-					pl.addLatLng(coord.reverse());
-				});*/
-				var latlngs = [];
-
-				var pl = null;
-				if (linegeom.coordinates.length > 1) {
-					$.each(linegeom.coordinates, function (i, coord) {
-						//pl.addLatLng(coord.reverse());
-						var ll = [];
-						$.each(coord, function (j, c) {
-							ll.push(L.latLng(c[1], c[0]));
-						});
-						latlngs.push(ll);
-					});
-
-					pl = new L.MultiPolyline(latlngs, {color:'green', opacity: 0.80});
-				} else {
-					pl = L.polyline([], {color:'green', opacity: 0.80});
-					$.each(linegeom.coordinates[0], function (i, coord) {
-						pl.addLatLng(coord.reverse());
-					});
-				}
 
 
-
-				AddCirclesToPolyline(pl);
-				pl.on('click', function (e) {
-					highlightPath(this);
+				markerJson.push({type: 'Feature',
+					properties: {
+						name: park.name,
+						adopters: park.adopters,
+						id: park.id
+					},
+					geometry: {
+						type: 'Point',
+						coordinates: geom.coordinates
+					}
 				});
 
-				marker.on('click', function (e) {
-					paths.eachLayer(function (layer) {
-						var lPopup = (layer._popupContent) ? layer._popupContent : layer._popup.getContent();
-						if ($(lPopup).data('id') === $(marker.getPopup().getContent()).data('id')) {
-							highlightPath(layer);
-						}
-					});
+				polyJson.push({type: 'Feature',
+					properties: {
+						name: park.name,
+						adopters: park.adopters,
+						id: park.id
+					},
+					geometry: $.parseJSON(park.geom)
+					
 				});
-				if (shelter.start) {
-					pl.setStyle({color:'red', opacity: 0.80});
-
-				}
-
-				paths.addLayer(pl);
-				if (!shelter.start) {
-					marker.bindPopup('<div class="text-center" data-id="'+shelter.id+'"><h5>' + shelter.segment + "</h5><p class='lead'></p><button data-id='" + shelter.id + "' data-name='" + shelter.segment + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>");
-					pl.bindPopup('<div class="text-center" data-id="'+shelter.id+'"><h5>' + shelter.segment + "</h5><button data-id='" + shelter.id + "' data-name='" + shelter.segment + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>");
-				} else {
-                    marker.bindPopup('<div class="text-center" data-id="'+shelter.id+'"><h5>' + shelter.segment + '</h5>Greenway has been adopted by <strong>' + shelter.display +'</strong> through <strong>' + FormatDate(shelter.expires) + '</strong>.</div>');
-					pl.bindPopup('<div class="text-center" data-id="'+shelter.id+'"><h5>' + shelter.segment + '</h5>Greenway has been adopted by <strong>' + shelter.display +'</strong> through <strong>' + FormatDate(shelter.expires) + '</strong>.</div>');
-				}
-				marker.on('popupopen', popupOpen);
-				pl.on('popupopen', popupOpen);
 			});
+
+
+			markers = L.geoJson(markerJson, {
+				onEachFeature: function (feature, layer) {
+					var icon = L.divIcon({
+					html: feature.properties.adopters,
+					className: 'park-icon',
+					iconSize: [40,40]
+				});
+				layer.setIcon(icon);
+				var content = '<div class="text-center" data-id="'+feature.properties.id+'"><h5>' + feature.properties.name + "</h5><p>" + feature.properties.adopters + " adopters</p><button data-id='" + feature.properties.id + "' data-name='" + feature.properties.name + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>";
+				layer.bindPopup(content);
+				layer.on('popupopen', popupOpen);
+			}}).addTo(map);
+			polys = L.geoJson(polyJson, {
+				onEachFeature: function (feature, layer) {
+					var content = '<div class="text-center" data-id="'+feature.properties.id+'"><h5>' + feature.properties.name + "</h5><p>" + feature.properties.adopters + " adopters</p><button data-id='" + feature.properties.id + "' data-name='" + feature.properties.name + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>";
+					layer.bindPopup(content);
+					layer.on('popupopen', popupOpen);
+					layer.setStyle({color:'green', opacity: 0.80});
+
+			}}).addTo(map);			
 		}
 	});
 }
 
-function highlightPath (path) {
+function highlightPark (park) {
 	if (selected) {
 		$.each(selected, function (i, selection) {
 			selection.setStyle({color:lastColor});
@@ -152,27 +145,38 @@ function highlightPath (path) {
 	}
 	selected = [];
 
-	if (path._layers) {
-		$.each(path.getLayers(), function (i, l) {
+	if (park._layers) {
+		$.each(park.getLayers(), function (i, l) {
 			selected.push(l);
 			lastColor = l.options.color;
 			l.setStyle({color:'yellow', opacity: 0.80});
 		});
 	} else {
-		selected.push(path);
-		lastColor = path.options.color;
-		path.setStyle({color:'yellow', opacity: 0.80});
+		selected.push(park);
+		lastColor = park.options.color;
+		park.setStyle({color:'yellow', opacity: 0.80});
 	}
 }
 
 function popupOpen () {
 	var id = $("button", (this._popupContent) ? this._popupContent : this._popup.getContent()).data('id'),
 		name = $("button", (this._popupContent) ? this._popupContent : this._popup.getContent()).data('name');
-	shelterName = name;
+	parkName = name;
 	$('#inputId').val(id);
 	$("#adopt-modal .modal-title").text("Adopt " +  name);
-}
 
+	if (this.feature.geometry.type === 'Point') {
+		var marker = this;
+		polys.eachLayer(function (layer) {
+			var lPopup = (layer._popupContent) ? layer._popupContent : layer._popup.getContent();
+			if ($(lPopup).data('id') === $(marker.getPopup().getContent()).data('id')) {
+				highlightPark(layer);
+			}
+		});		
+	} else {
+		highlightPark(this);
+	}
+}
 //form validation functions//
 function placeErrors (error, element) {
 	$(element).parent().addClass('has-error');
@@ -253,19 +257,19 @@ function SetFormValidation () {
 					contact: $('#inputName').val(),
 					organization: $('#inputOrg').val(),
 					phone: $('#inputPhone').val()//,
-					//shelter: shelterName
+					//park: parkName
 				},
 				success: function (data) {
 					if (data.success) {
 						$('#adopt-modal').modal('hide');
 						markers.clearLayers();
-						GetShelters();
+						GetParks();
 					} else if (data.error){
 						$('#alert-message').text(data.error.msg);
 						$('#adopt-alert').show();
 						if (data.error.code == 99) {
 							markers.clearLayers();
-							GetShelters();
+							GetParks();
 						}
 					}
 				}
@@ -298,8 +302,8 @@ function SearchByAddress (value, dataset) {
 		}
 	});
 }
-function SetSearch () {
-	$('.typeahead').typeahead({
+function SetSearch (data) {
+/*	$('.typeahead').typeahead({
 		name: 'addresses',
 		remote: {
 			url: config.search.url + "?f=json&outFields=" + config.search.field + "&returnGeometry=false",
@@ -316,6 +320,32 @@ function SetSearch () {
 		}
 	}).on('typeahead:selected', function(obj, datum, dataset) {
 		SearchByAddress(datum.value, dataset);
+	});*/
+	var parks = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  // `states` is an array of state names defined in "The Basics"
+	  local: $.map(data, function(data) { return { value: data.name }; })
+	});
+	parks.initialize();
+	$('.typeahead').typeahead({
+		  hint: false,
+		  highlight: true,
+		  minLength: 1
+		},
+		{
+		  name: 'parks',
+		  displayKey: 'value',
+		  // `ttAdapter` wraps the suggestion engine in an adapter that
+		  // is compatible with the typeahead jQuery plugin
+		  source: parks.ttAdapter()
+		}).on('typeahead:selected', function(obj, datum, dataset) {
+			markers.eachLayer(function (layer) {
+				if (layer.feature.properties.name === datum.value) {
+					layer.openPopup();
+					map.setView(layer.getLatLng(), 16);
+				}
+			});
 	});
 }
 
@@ -337,10 +367,9 @@ $(document).ready(function () {
 	}
 	SetMarkerSymbols();
 	CreateMap();
-	GetShelters();
+	GetParks();
 	SetFeedbackForm();
 	SetFormValidation();
-	SetSearch();
 	$('#adopt-modal').on('hidden.bs.modal', function (e) {
 	  clearForm();
 	});

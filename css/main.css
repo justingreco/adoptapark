@@ -1,3 +1,11 @@
+.park-icon {
+	background: url(../img/marker-icon-green.png) bottom no-repeat;
+	color: white;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+}
+
 html, body {
 	height:100%;
 	padding: 0;
