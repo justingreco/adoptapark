@@ -1,10 +1,10 @@
 var config = {
 	parks: {
-		url: 'http://localhost/parksrest/v1/ws_geo_attributequery.php',
+		url: 'http://mapststarcsrv3/parksrest/v1/ws_geo_attributequery.php',
 		table: 'parks.parks_geojson'
 	},
 	adopt: {
-		url: 'http://localhost/parksrest/v1/ws_parks_adopt.php'
+		url: 'http://mapststarcsrv3/parksrest/v1/ws_parks_adopt.php'
 	},
 	search: {
 		url: 'http://maps.raleighnc.gov/arcgis/rest/services/Addresses/MapServer/0/query',
