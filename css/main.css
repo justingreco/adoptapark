@@ -5,28 +5,29 @@
 	font-size: 12pt;
 	font-weight: bold;
 }
-
+.adopted-icon {
+	background: url(../img/marker-icon-yellow.png) bottom no-repeat;
+	color: #666;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+}
 html, body {
 	height:100%;
 	padding: 0;
 	margin: 0;
 	background-color: #f8f8f8;
 }
-
 .navbar {
 	max-height: 50px;
 }
-
 .navbar, .jumbotron {
 	margin-bottom: 0px !important;
 	width: 100%;
 }
-
 .navbar .container {
 	width: 100%;
 }
-
-
 .jumbotron {
 	background-color: #5da245 !important;
 	color: white !important;
@@ -45,9 +46,7 @@ html, body {
 	width: 100%;
 	background-position: 30% 50%;
 	background: url(../img/Skyline1.png) bottom no-repeat;
-
 }
-
 .header img {
 	max-height: 80px;
 	-webkit-filter: drop-shadow(1px 1px 5px #333);
@@ -57,59 +56,46 @@ html, body {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
-
 .jumbotron span {
 	font-size: 10pt;
 	max-width: 100px;
 }
-
 .jumbotron {
 	line-height: 20px;
 }
-
 #catLogo {
 	height: 30px;
 	margin-right:10px;
 	margin-top: 10px;
 }
-
 #headerSeal {
 	height: 40px;
 	margin-left: 10px;
 	margin-right:10px;
 	margin-top: 4px;
 }
-
-
 .navbar {
 	z-index: 1000;
 }
-
 .navbar-header {
 	max-height: 50px;
 }
-
 .navbar-collapse.in {
 	background-color: #f8f8f8;
 }
-
 .navbar-collapse.collapsing {
 	background-color: #f8f8f8;
 }
-
 .navbar-brand {
 	max-height: 50px;
 }
-
 .help-block {
 	display: none;
 }
-
 div.row.well{
 	margin: 0;
 	padding: 0;
 }
-
 .typeahead {
 	width: 95%;
 	margin-top: 7px;
@@ -118,18 +104,14 @@ div.row.well{
 	padding-right: 10px;
 	padding-left: 10px;
 }
-
 .tt-dropdown-menu {
 	left: 10px !important;
 }
-
 .tt-hint {
 	top: 8px !important;
 	left: 7px !important;
 }
-
 #map {
-
 	position: absolute;
 	top: 50px;
 	bottom: 0;
@@ -137,21 +119,31 @@ div.row.well{
 	right: 0;
 	z-index: 10;
 }
-
+.leaflet-popup-content {
+	text-align: center;
+	min-width: 150px;
+}
+.leaflet-popup-content ul {
+	list-style-type: none;
+	padding: 0;
+}
+.pager a {
+	width: 50%;
+	display: inline-block;
+	visibility: hidden;
+}
 /*.leaflet-control-zoom {
 	display: none;
 }
 */
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
 	#map {
 		top: 146px;
 	}
-
 	.nav>li {
         	padding-left: 20px;
 	}
-
 /*	.leaflet-control-zoom {
 		display: block;
 	}*/

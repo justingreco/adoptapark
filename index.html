@@ -7,15 +7,11 @@
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="css/typeahead.js-bootstrap.css"/>
 		<link rel="stylesheet" href="css/main.css"/>
     	<link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css' rel='stylesheet' />
-
-
-
 	    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	    <!--[if lt IE 9]>
@@ -27,11 +23,9 @@
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
 		  ga('create', 'UA-11110258-33', 'auto');
 		  ga('send', 'pageview');
-
-		</script>   
+		</script>
 	</head>
 	<body>
 	  	<div class="navbar navbar-default" role="banner">
@@ -48,7 +42,7 @@
 	  			</div>
 	  			<div class="navbar-collapse bs-navbar-collapse collapse" role="navigation">
 	  				<ul class="nav navbar-nav navbar-right">
-	  					<li><input id="searchInput" class="typeahead form-control" type="text" placeholder="Search by park name">
+	  					<li><input id="searchInput" class="typeahead form-control" type="text" placeholder="Search by park or address">
 	  					</li>
 	  					<!--<li><a href="javascript:void(0)" data-toggle='modal' data-target='#feedback-modal' >Feedback</a></li>-->
 	  					<li><a href="javascript:void(0)" data-toggle='modal' data-target='#about-modal' >About</a></li>
@@ -116,7 +110,6 @@
 	  		</div>
 	  	</div>
 	  </div>
-
 	  <div id="feedback-modal" class="modal fade">
 	  	<div class="modal-dialog">
 	  		<div class="modal-content">
@@ -142,7 +135,6 @@
 	  		</div>
 	  	</div>
 	  </div>
-
 	  <div id="about-modal" class="modal fade">
 	  	<div class="modal-dialog">
 	  		<div class="modal-content">
@@ -171,11 +163,11 @@
 		  				<p>The Raleigh Parks, Recreation and Cultural Resources Adopt-A-Park program provides a volunteer opportunity for interested individuals, businesses and groups to participate in park maintenance projects and support the Raleigh Parks System. The citizen volunteer agrees to maintain the adopted park quarterly for at least one year. The citizen volunteer must sign an <a href="docs/adopt-a-park-agreement.pdf" target="_blank">Adopt-A-Park Agreement</a>. Staff request the volunteer report any vandalism or suspicious activity.</p>
 		  				<div class="text-center"><button class="btn btn-success" data-dismiss="modal">Continue</button></div>
 		  				<center><div class="checkbox" style="max-width:150px"><!--<label><input type="checkbox">Do not display again</label>--></div></center>
-<!-- 		  				<div class="row well">
+ 		  				<div class="row well">
 		  					<h5 class="text-center">Map Key</h5>
-							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-green.png" style="margin-right:10px" />Available Park</p></div>
-							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-red.png" style="margin-right:10px" />Adopted Park</p></div>
-						</div> -->
+							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-green.png" style="margin-right:10px" />Park with no adopters yet</p></div>
+							<div class="col-sm-6 text-center"><p><img src="img/marker-icon-yellow.png" style="margin-right:10px" />Park with adopters</p></div>
+						</div>
 		  			</div>
 		  		</div>
 		  	</div>
@@ -191,7 +183,7 @@
 	  				<span>These are the minimum responsibilities that accompany the adoption of a park for one year. The Citizen Volunteer or group will complete the following tasks quarterly as part of this program:
 	  				</span>
 	  				<ol>
-	  					<li>The Citizen Volunteer shall assist the Department by arranging periodic work days to insure that the areas are clean of trash, debris, and weeds. 
+	  					<li>The Citizen Volunteer shall assist the Department by arranging periodic work days to insure that the areas are clean of trash, debris, and weeds.
 						</li>
 	  					<li>The Citizen Volunteer shall assist the Department with other maintenance as identified by both parties. </li>
 	  					<li>Weed control is limited to hand weeding. No chemical weed control shall occur by the Citizen Volunteer per the Department’s Pesticide Management Policy. </li>
@@ -206,7 +198,6 @@
 	  		</div>
 	  	</div>
 	  </div>
-
 	  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	  <script src="js/jquery.validate.min.js"></script>
 	  <!-- Latest compiled and minified JavaScript -->

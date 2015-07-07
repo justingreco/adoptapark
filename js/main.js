@@ -10,9 +10,10 @@ var config = {
 		url: 'http://maps.raleighnc.gov/arcgis/rest/services/Addresses/MapServer/0/query',
 		field: 'ADDRESS',
 		searchField: 'ADDRESSU'
-	}
+	},
+	maxAdopters: 5
 };
-var map, greenMarker, redMarker, markers, polys, parkName, selected, lastColor;
+var map, greenMarker, redMarker, markers, polys, parkName, selected, lastColor, adopters = [];
 //map functions//
 function SetMarkerSymbols () {
 	greenMarker = L.icon({
@@ -27,26 +28,20 @@ function SetMarkerSymbols () {
 function CreateMap () {
 	map = L.map('map').setView([35.83, -78.6436],11);
         L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',{minZoom: 10, attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(map);
-	/*L.tileLayer('http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom: 16, attribution: 'Esri, DeLorme, NAVTEQ'}).addTo(map);*/
-	//paths = L.layerGroup().addTo(map);
-	//markers = L.layerGroup().addTo(map);
 	if (Modernizr.geolocation) {
         L.control.locate().addTo(map);
     }
 }
 //display parks on map//
-
 function FormatDate(input) {
     var splitDate = input.split('-'),
 	dt = new Date(splitDate[0], splitDate[1] - 1, splitDate[2]);
     dt.setTime(dt.getTime() + dt.getTimezoneOffset() * 60 * 1000);
     return dt.toLocaleDateString();
 }
-
 function ShowCircles (point) {
 	L.circle(point, 10,{color:'gray', fillColor:'gray', opacity:1, fillOpacity:1}).addTo(map);
 }
-
 function AddCirclesToPolyline(pl) {
 	var lines = [];
 	if (pl._layers) {
@@ -55,7 +50,6 @@ function AddCirclesToPolyline(pl) {
 	} else {
 		lines.push(pl);
 	}
-
 	$.each(lines, function (i, line) {
 		var latlngs = line.getLatLngs(),
 			start = latlngs[0],
@@ -64,7 +58,6 @@ function AddCirclesToPolyline(pl) {
 		ShowCircles(end);
 	});
 }
-
 function GetParks () {
 	$.ajax({
 		url: config.parks.url,
@@ -75,19 +68,14 @@ function GetParks () {
 		cache: false,
 		success: function (data) {
 			SetSearch(data);
-
 			var markerJson = [],
 				polyJson = [];
-
-
 			$.each(data, function (i, park) {
 				var geom = $.parseJSON(park.center),
 					icon = greenMarker;
 				if (park.start) {
 					icon = redMarker;
 				}
-
-
 				markerJson.push({type: 'Feature',
 					properties: {
 						name: park.name,
@@ -99,7 +87,6 @@ function GetParks () {
 						coordinates: geom.coordinates
 					}
 				});
-
 				polyJson.push({type: 'Feature',
 					properties: {
 						name: park.name,
@@ -107,44 +94,43 @@ function GetParks () {
 						id: park.id
 					},
 					geometry: $.parseJSON(park.geom)
-					
 				});
 			});
-
-
 			markers = L.geoJson(markerJson, {
 				onEachFeature: function (feature, layer) {
 					var icon = L.divIcon({
 					html: feature.properties.adopters,
-					className: 'park-icon',
+					className: ((feature.properties.adopters > 0) ? 'adopted-icon' : 'park-icon'),
 					iconSize: [40,40]
 				});
 				layer.setIcon(icon);
-				var content = '<div class="text-center" data-id="'+feature.properties.id+'"><h5>' + feature.properties.name + "</h5><p>" + feature.properties.adopters + " adopters</p><button data-id='" + feature.properties.id + "' data-name='" + feature.properties.name + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>";
-				layer.bindPopup(content);
+				layer.bindPopup(buildContent(feature));
 				layer.on('popupopen', popupOpen);
 			}}).addTo(map);
 			polys = L.geoJson(polyJson, {
 				onEachFeature: function (feature, layer) {
-					var content = '<div class="text-center" data-id="'+feature.properties.id+'"><h5>' + feature.properties.name + "</h5><p>" + feature.properties.adopters + " adopters</p><button data-id='" + feature.properties.id + "' data-name='" + feature.properties.name + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>";
-					layer.bindPopup(content);
+					layer.bindPopup(buildContent(feature));
 					layer.on('popupopen', popupOpen);
-					layer.setStyle({color:'green', opacity: 0.80});
-
-			}}).addTo(map);			
+					layer.setStyle({color:((feature.properties.adopters > 0) ? '#FDEE00' : 'green'), opacity: 0.80});
+			}}).addTo(map);
 		}
 	});
 }
-
+function buildContent (feature) {
+	var content = '<div class="text-center" data-id="'+feature.properties.id+'"><h4>' + feature.properties.name + '</h4>';
+	if (feature.properties.adopters > 0) {
+		content += "<strong>Adopters</strong><ul id='adoptersList'></ul><div class='pager row' style='display:none'><a href='#' onclick='showLastAdopters(event)'><span class='glyphicon glyphicon-chevron-left'></span> Previous</a><a href='#' onclick='showNextAdopters(event)'>Next <span class='glyphicon glyphicon-chevron-right'></span></a></div>"
+	}
+	content += "<button data-id='" + feature.properties.id + "' data-name='" + feature.properties.name + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>";
+	return content
+}
 function highlightPark (park) {
 	if (selected) {
 		$.each(selected, function (i, selection) {
 			selection.setStyle({color:lastColor});
 		});
-		
 	}
 	selected = [];
-
 	if (park._layers) {
 		$.each(park.getLayers(), function (i, l) {
 			selected.push(l);
@@ -157,14 +143,13 @@ function highlightPark (park) {
 		park.setStyle({color:'yellow', opacity: 0.80});
 	}
 }
-
 function popupOpen () {
 	var id = $("button", (this._popupContent) ? this._popupContent : this._popup.getContent()).data('id'),
 		name = $("button", (this._popupContent) ? this._popupContent : this._popup.getContent()).data('name');
 	parkName = name;
+	getAdopterNames(id, this);
 	$('#inputId').val(id);
 	$("#adopt-modal .modal-title").text("Adopt " +  name);
-
 	if (this.feature.geometry.type === 'Point') {
 		var marker = this;
 		polys.eachLayer(function (layer) {
@@ -172,9 +157,78 @@ function popupOpen () {
 			if ($(lPopup).data('id') === $(marker.getPopup().getContent()).data('id')) {
 				highlightPark(layer);
 			}
-		});		
+		});
 	} else {
 		highlightPark(this);
+	}
+}
+function getAdopterNames (id, popup) {
+	$.ajax({
+		url: config.parks.url,
+		data: {
+			table: 'parks.adopters',
+			fields: 'display',
+			parameters: 'parksfk = ' + id,
+			order: 'display'
+		},
+		cache: false,
+		success: function (data) {
+			adopters = data;
+			var content = null;
+			if (popup._popup) {
+				content = $(popup.getPopup().getContent());
+			} else {
+				content = $(popup._popupContent);
+			}
+			var list = $('ul', content).empty();
+			if (adopters.length > config.maxAdopters) {
+				$('.pager', content).css('display', 'block');
+				$('.pager a:first', content).css('visibility', 'hidden');
+				$('.pager a:last', content).css('visibility', 'visible');
+			} else {
+				$('.pager', content).css('visibility', 'hidden');
+			}
+			for (var i = 0; i < config.maxAdopters && i < adopters.length; i++) {
+				list.append('<li>' + adopters[i].display + '</li>');
+			}
+			list.attr('data-page', 0);
+			if (popup._popup) {
+			popup.setPopupContent('<div>' + content.html() + '</div>');
+			} else {
+				popup.bindPopup('<div>' + content.html() + '</div>');
+			}
+		}
+	});
+}
+function showLastAdopters (e) {
+	list = $(e.target).parent().parent().find('ul').empty();
+	var page = list.data('page') - 1;
+	list.data('page', page);
+	if (page > 0) {
+		$('.pager a:first', list.parent()).css('visibility', 'visible');
+		$('.pager a:last', list.parent()).css('visibility', 'visible');
+	} else {
+		$('.pager a:first', list.parent()).css('visibility', 'hidden');
+		$('.pager a:last', list.parent()).css('visibility', 'visible');
+	}
+	for (var i = page * config.maxAdopters; i < (page + 1) * config.maxAdopters; i++) {
+		var a = adopters[i];
+		list.append('<li>' + a.display + '</li>');
+	}
+}
+function showNextAdopters (e) {
+	list = $(e.target).parent().parent().find('ul').empty();
+	var page = list.data('page') + 1;
+	list.data('page', page);
+	if (page > 0) {
+		$('.pager a:first', list.parent()).css('visibility', 'visible');
+	}
+	if ((page + 1) * config.maxAdopters > adopters.length) {
+		$('.pager a:last', list.parent()).css('visibility', 'hidden');
+	}
+	for (var i = page * config.maxAdopters; i < (page + 1) * config.maxAdopters && i < adopters.length; i++) {
+		var a = adopters[i];
+		list.append('<li>' + a.display + '</li>');
 	}
 }
 //form validation functions//
@@ -185,9 +239,7 @@ function placeErrors (error, element) {
 function removeErrors (label, element) {
 	$(element).parent().removeClass('has-error');
 	$('.help-block', $(element).parent()).hide().text('');
-
 }
-
 function SetFeedbackForm () {
 	$("#feedback-modal form").validate({
 		rules: {
@@ -216,7 +268,6 @@ function SetFeedbackForm () {
 		success: removeErrors
 	});
 }
-
 function SetFormValidation () {
 	$.validator.addMethod("phoneUS", function(phone_number, element) {
 	    phone_number = phone_number.replace(/\s+/g, "");
@@ -246,7 +297,6 @@ function SetFormValidation () {
 		},
 		submitHandler: function () {
 			$('#adopt-alert').hide();
-            
 			//$('#adopt-modal').bu
 			$.ajax({
 				url: config.adopt.url,
@@ -263,12 +313,14 @@ function SetFormValidation () {
 					if (data.success) {
 						$('#adopt-modal').modal('hide');
 						markers.clearLayers();
+						polys.clearLayers();
 						GetParks();
 					} else if (data.error){
 						$('#alert-message').text(data.error.msg);
 						$('#adopt-alert').show();
 						if (data.error.code == 99) {
 							markers.clearLayers();
+							polys.clearLayers();
 							GetParks();
 						}
 					}
@@ -303,30 +355,34 @@ function SearchByAddress (value, dataset) {
 	});
 }
 function SetSearch (data) {
-/*	$('.typeahead').typeahead({
-		name: 'addresses',
+	var addresses = new Bloodhound({
+		datumTokenizer: function (datum) {
+	        return Bloodhound.tokenizers.whitespace(datum.value);
+	    },
+	    queryTokenizer: Bloodhound.tokenizers.whitespace,
 		remote: {
-			url: config.search.url + "?f=json&outFields=" + config.search.field + "&returnGeometry=false",
+			url: config.search.url + "?orderByFields=ADDRESS&returnGeometry=false&outFields=ADDRESS&returnDistinctValues=false&f=json",
 			filter: function (resp) {
-				var values = [];
-				$(resp.features).each(function (i, feature) {
-					values.push(feature.attributes[config.search.field]);
-				});
-				return values;
-			},
-			replace: function (url, query) {
-				return url + "&where=" + config.search.searchField + " like '" + query.toUpperCase() + "%'";
+				var data = []
+				if (resp.features.length > 0) {
+					$(resp.features).each(function (i, f) {
+						data.push({value:f.attributes['ADDRESS']});
+					});
+				}
+				return data;},
+			replace: function(url, uriEncodedQuery) {
+			      var newUrl = url + '&where=ADDRESSU like ' + "'" + uriEncodedQuery.toUpperCase() +"%'";
+			      return newUrl;
 			}
 		}
-	}).on('typeahead:selected', function(obj, datum, dataset) {
-		SearchByAddress(datum.value, dataset);
-	});*/
+	});
 	var parks = new Bloodhound({
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
 	  // `states` is an array of state names defined in "The Basics"
 	  local: $.map(data, function(data) { return { value: data.name }; })
 	});
+	addresses.initialize();
 	parks.initialize();
 	$('.typeahead').typeahead({
 		  hint: false,
@@ -338,24 +394,38 @@ function SetSearch (data) {
 		  displayKey: 'value',
 		  // `ttAdapter` wraps the suggestion engine in an adapter that
 		  // is compatible with the typeahead jQuery plugin
-		  source: parks.ttAdapter()
-		}).on('typeahead:selected', function(obj, datum, dataset) {
-			markers.eachLayer(function (layer) {
-				if (layer.feature.properties.name === datum.value) {
-					layer.openPopup();
-					map.setView(layer.getLatLng(), 16);
-				}
-			});
+		  source: parks.ttAdapter(),
+			templates: {
+				header: '<h5>Parks</h5>'
+			}
+		},
+		{
+			name: 'address',
+			displayKey: 'value',
+			source: addresses.ttAdapter(),
+			templates: {
+				header: '<h5>Address</h5>'
+			}
+		}
+		).on('typeahead:selected', function(obj, datum, dataset) {
+			if (dataset === 'parks') {
+				markers.eachLayer(function (layer) {
+					if (layer.feature.properties.name === datum.value) {
+						layer.openPopup();
+						map.setView(layer.getLatLng(), 16);
+					}
+				});
+			} else {
+				SearchByAddress(datum.value, dataset);
+			}
 	});
 }
-
 function clearForm () {
 	FormMarkAllValid();
 	$('#adopt-modal input').val('');
 	$('#termsCheck').attr('checked', false);
 	$('#submitButton').addClass('disabled');
 }
-
 $(document).ready(function () {
 	if(typeof(Storage)!=='undefined') {
 		if (window.localStorage.hideSplash === 'false' || !window.localStorage.hideSplash) {
