@@ -1,10 +1,10 @@
 var config = {
 	parks: {
-		url: 'http://mapststarcsrv3/parksrest/v1/ws_geo_attributequery.php',
+		url: 'http://openmaps.raleighnc.gov/parksapi/v1/ws_geo_attributequery.php',
 		table: 'parks.parks_geojson'
 	},
 	adopt: {
-		url: 'http://mapststarcsrv3/parksrest/v1/ws_parks_adopt.php'
+		url: 'http://openmaps.raleighnc.gov/parksapi/v1/ws_parks_adopt.php'
 	},
 	search: {
 		url: 'http://maps.raleighnc.gov/arcgis/rest/services/Addresses/MapServer/0/query',
@@ -99,7 +99,7 @@ function GetParks () {
 			markers = L.geoJson(markerJson, {
 				onEachFeature: function (feature, layer) {
 					var icon = L.divIcon({
-					html: feature.properties.adopters,
+					//html: feature.properties.adopters,
 					className: ((feature.properties.adopters > 0) ? 'adopted-icon' : 'park-icon'),
 					iconSize: [40,40]
 				});
@@ -111,7 +111,7 @@ function GetParks () {
 				onEachFeature: function (feature, layer) {
 					layer.bindPopup(buildContent(feature));
 					layer.on('popupopen', popupOpen);
-					layer.setStyle({color:((feature.properties.adopters > 0) ? '#FDEE00' : 'green'), opacity: 0.80});
+					layer.setStyle({color:((feature.properties.adopters > 0) ? 'orange' : 'green'), opacity: 0.80});
 			}}).addTo(map);
 		}
 	});
