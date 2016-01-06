@@ -115,6 +115,7 @@ function GetParks () {
 				layer.setIcon(icon);
 				layer.bindPopup(buildContent(feature));
 				layer.on('popupopen', popupOpen);
+				layer.on('popupclose', unhighlightPark);
 			}}).addTo(map);
 			polys = L.geoJson(polyJson, {
 				onEachFeature: function (feature, layer) {
@@ -144,6 +145,11 @@ function buildContent (feature) {
 		content += "<div class='alert alert-danger'>Park is fully adopted</div>";
 	}
 	return content;
+}
+function unhighlightPark () {
+	$.each(selected, function (i, selection) {
+		selection.setStyle({color:lastColor});
+	});
 }
 function highlightPark (park) {
 	if (selected) {
@@ -175,7 +181,7 @@ function popupOpen () {
 		var marker = this;
 		polys.eachLayer(function (layer) {
 			var lPopup = (layer._popupContent) ? layer._popupContent : layer._popup.getContent();
-			if ($(lPopup).data('id') === $(marker.getPopup().getContent()).data('id')) {
+			if ($("h4", lPopup).data('id') === $("h4", marker.getPopup().getContent()).data('id')) {
 				highlightPark(layer);
 			}
 		});
