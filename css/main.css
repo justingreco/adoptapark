@@ -12,6 +12,14 @@
 	font-size: 12pt;
 	font-weight: bold;
 }
+
+.full-icon {
+	background: url(../img/marker-icon-red.png) bottom no-repeat;
+	color: white;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+}
 html, body {
 	height:100%;
 	padding: 0;

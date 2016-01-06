@@ -80,6 +80,7 @@ function GetParks () {
 					properties: {
 						name: park.name,
 						adopters: park.adopters,
+						parkfull: park.parkfull,
 						id: park.id
 					},
 					geometry: {
@@ -91,6 +92,7 @@ function GetParks () {
 					properties: {
 						name: park.name,
 						adopters: park.adopters,
+						parkfull: park.parkfull,
 						id: park.id
 					},
 					geometry: $.parseJSON(park.geom)
@@ -98,31 +100,50 @@ function GetParks () {
 			});
 			markers = L.geoJson(markerJson, {
 				onEachFeature: function (feature, layer) {
+					var className = 'park-icon';
+					if (feature.properties.parkfull) {
+						className = 'full-icon';
+					} else if (feature.properties.adopters > 0) {
+						className = 'adopted-icon';
+					}
 					var icon = L.divIcon({
 					//html: feature.properties.adopters,
-					className: ((feature.properties.adopters > 0) ? 'adopted-icon' : 'park-icon'),
+					className: className,
 					iconSize: [40,40]
 				});
+
 				layer.setIcon(icon);
 				layer.bindPopup(buildContent(feature));
 				layer.on('popupopen', popupOpen);
 			}}).addTo(map);
 			polys = L.geoJson(polyJson, {
 				onEachFeature: function (feature, layer) {
+					var color = 'green';
+					if (feature.properties.parkfull) {
+						color = 'red';
+					} else {
+						if (feature.properties.adopters > 0) {
+							color = 'orange';
+						}
+					}
 					layer.bindPopup(buildContent(feature));
 					layer.on('popupopen', popupOpen);
-					layer.setStyle({color:((feature.properties.adopters > 0) ? 'orange' : 'green'), opacity: 0.80});
+					layer.setStyle({color:color, opacity: 0.80});
 			}}).addTo(map);
 		}
 	});
 }
 function buildContent (feature) {
-	var content = '<div class="text-center" data-id="'+feature.properties.id+'"><h4>' + feature.properties.name + '</h4>';
+	var content = '<div class="text-center"><h4 data-id="' + feature.properties.id + '">' + feature.properties.name + '</h4>';
 	if (feature.properties.adopters > 0) {
 		content += "<strong>Adopters</strong><ul id='adoptersList'></ul><div class='pager row' style='display:none'><a href='#' onclick='showLastAdopters(event)'><span class='glyphicon glyphicon-chevron-left'></span> Previous</a><a href='#' onclick='showNextAdopters(event)'>Next <span class='glyphicon glyphicon-chevron-right'></span></a></div>"
 	}
-	content += "<button data-id='" + feature.properties.id + "' data-name='" + feature.properties.name + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>";
-	return content
+	if (!feature.properties.parkfull) {
+		content += "<button data-id='" + feature.properties.id + "' data-name='" + feature.properties.name + "'  data-toggle='modal' data-target='#adopt-modal' class='btn btn-success'>Adopt Me</button></div>";
+	} else {
+		content += "<div class='alert alert-danger'>Park is fully adopted</div>";
+	}
+	return content;
 }
 function highlightPark (park) {
 	if (selected) {
@@ -144,7 +165,7 @@ function highlightPark (park) {
 	}
 }
 function popupOpen () {
-	var id = $("button", (this._popupContent) ? this._popupContent : this._popup.getContent()).data('id'),
+	var id = $("h4", (this._popupContent) ? this._popupContent : this._popup.getContent()).data('id'),
 		name = $("button", (this._popupContent) ? this._popupContent : this._popup.getContent()).data('name');
 	parkName = name;
 	getAdopterNames(id, this);
