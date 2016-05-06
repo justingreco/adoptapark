@@ -399,7 +399,7 @@ function SetSearch (data) {
 				return data;},
 			replace: function(url, uriEncodedQuery) {
 			      var newUrl = url + '&where=ADDRESSU like ' + "'" + uriEncodedQuery.toUpperCase() +"%'";
-			      return newUrl;
+			      return encodeURI(newUrl);
 			}
 		}
 	});
